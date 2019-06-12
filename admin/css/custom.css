@@ -1,0 +1,38 @@
+/* your styles go here */
+.encabezado_div{
+    WIDTH: 100%;
+    HEIGHT: AUTO;
+    margin: 50px;
+}
+.table-dark{
+    padding: 50px !important;
+    width: auto;
+    text-align: center;
+}
+.form_modif{
+    width: 60% !important;
+}
+.btn-outline-info{
+    margin-bottom:10px;
+}
+.form_modif_clie{
+    margin: 10px auto;
+    text-align: center;
+}
+label{
+    display: block !important;
+}
+
+.form_logeo_clie{
+    margin: 100px auto;
+    text-align: center;
+}
+.form_logeo_clie .alert_spanex{
+    margin:10px 0;
+}
+@media (max-width: 609px){
+.side-navbar {
+    left: -70px;
+    width: 70px;
+    text-align: center;
+}}
