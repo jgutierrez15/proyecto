@@ -3,62 +3,37 @@ class Cart {
     protected $cart_contents = array();
     
     public function __construct(){
-        // get the shopping cart array from the session
+        
         $this->cart_contents = !empty($_SESSION['cart_contents'])?$_SESSION['cart_contents']:NULL;
         if ($this->cart_contents === NULL){
-            // set some base values
+            
             $this->cart_contents = array('cart_total' => 0, 'total_items' => 0);
         }
     }
     
-    /**
-     * Cart Contents: Returns the entire cart array
-     * @param    bool
-     * @return    array
-     */
     public function contents(){
-        // rearrange the newest first
         $cart = array_reverse($this->cart_contents);
-
-        // remove these so they don't create a problem when showing the cart table
         unset($cart['total_items']);
         unset($cart['cart_total']);
-
         return $cart;
     }
     
-    /**
-     * Get cart item: Returns a specific cart item details
-     * @param    string    $row_id
-     * @return    array
-     */
     public function get_item($row_id){
         return (in_array($row_id, array('total_items', 'cart_total'), TRUE) OR ! isset($this->cart_contents[$row_id]))
             ? FALSE
             : $this->cart_contents[$row_id];
     }
     
-    /**
-     * Total Items: Returns the total item count
-     * @return    int
-     */
+    
     public function total_items(){
         return $this->cart_contents['total_items'];
     }
     
-    /**
-     * Cart Total: Returns the total price
-     * @return    int
-     */
+    
     public function total(){
         return $this->cart_contents['cart_total'];
     }
-    
-    /**
-     * Insert items into the cart and save it to the session
-     * @param    array
-     * @return    bool
-     */
+   
     public function insert($item = array()){
         if(!is_array($item) OR count($item) === 0){
             return FALSE;
